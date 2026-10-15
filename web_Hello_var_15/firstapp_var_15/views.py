@@ -1,3 +1,4 @@
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
 def navigator(request):
@@ -26,3 +27,6 @@ def ssd(request):
 
 def hdd(request):
     return render(request, "hdd.html")
+
+def redirect_to_navigator(_):
+    return HttpResponseRedirect("/navigator")
