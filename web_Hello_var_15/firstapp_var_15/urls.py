@@ -13,4 +13,7 @@ urlpatterns = [
     path('hdd/', views.hdd),
     path('', views.redirect_to_home),
     path('home/', views.home),
+    path('client',views.client),
+    path('postuser',views.postuser),
+
 ]

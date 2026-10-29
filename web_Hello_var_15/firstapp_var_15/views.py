@@ -3,6 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.conf import settings
 import pandas as pd
+from . import forms
 
 def navigator(request):
     return render(request, "navigator.html")
@@ -116,3 +117,15 @@ def gettabl():
 
     f.close()
     return cat
+
+def client(request):
+    userform = forms.UserForm
+    return render(request, "client.html",{"form":userform})
+
+def postuser(request):
+    name = request.POST.get("name", "Undefined") # по умолчанию
+    surname = request.POST.get("surname", "Undefined")   # по умолчанию
+    return HttpResponse(f"<h2>Имя: {name} Фамилия: {surname}</h2>")
+
+
+
