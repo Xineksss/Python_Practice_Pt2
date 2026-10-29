@@ -12,8 +12,10 @@ urlpatterns = [
     path('ssd/', views.ssd),
     path('hdd/', views.hdd),
     path('', views.redirect_to_home),
-    path('home/', views.home),
+    path('home', views.home, name='home'),
     path('client',views.client),
     path('postuser',views.postuser),
+    path('buy/', views.buy_component, name='buy_component'),
+    path('success/', views.purchase_success, name='success'),
 
 ]
