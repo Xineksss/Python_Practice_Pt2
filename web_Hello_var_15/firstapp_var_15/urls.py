@@ -2,7 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('navigator', views.navigator),
+    path('navigator', views.navigator, name="navigator"),
     path('graphic_cards/', views.graphic_cards),
     path('processors/', views.processors),
     path('motherboards/', views.motherboards),
@@ -11,5 +11,6 @@ urlpatterns = [
     path('cases/', views.cases),
     path('ssd/', views.ssd),
     path('hdd/', views.hdd),
-    path('', views.redirect_to_navigator),
+    path('', views.redirect_to_home),
+    path('home/', views.home),
 ]
