@@ -97,7 +97,7 @@ def hdd(request):
     return render(request, "hdd.html", context)
 
 def redirect_to_home(_):
-    return HttpResponseRedirect("home")
+    return redirect("home")
 
 def home(request):
     content_list = gettabl()

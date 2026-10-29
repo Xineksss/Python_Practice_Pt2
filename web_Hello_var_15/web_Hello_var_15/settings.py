@@ -130,5 +130,3 @@ MAILERS = {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
 }
-
-APPEND_SLASH = False
