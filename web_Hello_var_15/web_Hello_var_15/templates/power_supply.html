@@ -11,5 +11,31 @@
 <body>
 <h1>Каталог блоков питания</h1>
 <img src="{% static 'img/power_supply.png' %}" width="400">
+
+
+<table>
+        <thead>
+            <tr>
+                {% for header in headers %}
+                <th>{{ header }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for row in data %}
+            <tr>
+                {% for value in row.values %}
+                    <td>{{ value }}</td>
+                {% endfor %}
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="/navigator">Вернуться в навигатор</a>
+
+
 </body>
 </html>
