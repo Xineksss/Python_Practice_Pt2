@@ -33,3 +33,11 @@ def edit(request,id):
             return render(request,"edit.html",{"gpus":gpus})
     except GPU.DoesNotExist:
         return HttpResponseNotFound("<h2> Клиент не найден</h2>")
+
+def delete(request,id):
+    try:
+        gpus=GPU.objects.get(id=id)
+        gpus.delete()
+        return HttpResponseRedirect("/")
+    except GPU.DoesNotExist:
+        return HttpResponseNotFound("<h2>Клиент не найден</h2>")
