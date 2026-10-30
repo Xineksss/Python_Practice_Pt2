@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Редактирование</title>
+</head>
+
+<body class="container">
+<form method="POST">
+    {% csrf_token %}
+    <p>
+        <label>Бренд:</label><br>
+        <input type="text" name="brand" value="{{gpus.brand}}"/>
+    </p>
+    <p>
+        <label>Модель:</label><br>
+        <input type="text" name="model" value="{{gpus.model}}"/>
+    </p>
+    <p>
+        <label>Объем памяти:</label><br>
+        <input type="number" name="video_memory_size" value="{{gpus.video_memory_size}}"/>
+    </p>
+    <p>
+        <label>Тип видеопамяти:</label><br>
+        <input type="text" name="video_memory_type" value="{{gpus.video_memory_type}}"/>
+    </p>
+
+    <input type="submit" value = "Сохранить">
+
+</form>
+
+</body>
+</html>

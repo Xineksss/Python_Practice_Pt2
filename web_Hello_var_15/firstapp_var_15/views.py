@@ -20,7 +20,7 @@ def graphic_cards(request):
     return render(request, "graphic_cards.html", context)
 
 def processors(request):
-    df = pd.read_excel(os.path.join(settings.BASE_DIR, "firstapp_var_15", "tablica", "case.xlsx"))
+    df = pd.read_excel(os.path.join(settings.BASE_DIR, "firstapp_var_15", "tablica", "processor.xlsx"))
     headers = df.columns.tolist()
     data = df.to_dict("records")
     context = {
@@ -31,7 +31,7 @@ def processors(request):
     return render(request, "processors.html", context)
 
 def motherboards(request):
-    df = pd.read_excel(os.path.join(settings.BASE_DIR, "firstapp_var_15", "tablica", "case.xlsx"))
+    df = pd.read_excel(os.path.join(settings.BASE_DIR, "firstapp_var_15", "tablica", "motherboard.xlsx"))
     headers = df.columns.tolist()
     data = df.to_dict("records")
     context = {
@@ -42,7 +42,7 @@ def motherboards(request):
     return render(request, "motherboards.html", context)
 
 def ram(request):
-    df = pd.read_excel(os.path.join(settings.BASE_DIR, "firstapp_var_15", "tablica", "case.xlsx"))
+    df = pd.read_excel(os.path.join(settings.BASE_DIR, "firstapp_var_15", "tablica", "ram.xlsx"))
     headers = df.columns.tolist()
     data = df.to_dict("records")
     context = {
@@ -53,7 +53,7 @@ def ram(request):
     return render(request, "ram.html", context)
 
 def power_supply(request):
-    df = pd.read_excel(os.path.join(settings.BASE_DIR, "firstapp_var_15", "tablica", "case.xlsx"))
+    df = pd.read_excel(os.path.join(settings.BASE_DIR, "firstapp_var_15", "tablica", "power_supply.xlsx"))
     headers = df.columns.tolist()
     data = df.to_dict("records")
     context = {
