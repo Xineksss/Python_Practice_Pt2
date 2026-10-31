@@ -1,63 +1,23 @@
-<!doctype html>
-<html lang="ru">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Видеокарты</title>
+    <meta charset="utf-8" />
 </head>
 <body>
-
-<form method="POST" action="/create/">
-    {% csrf_token %}
-    <p>
-        <label>Бренд:</label><br>
-        <input type="text" name="brand"/>
-    </p>
-    <p>
-        <label>Модель:</label><br>
-        <input type="text" name="model"/>
-    </p>
-    <p>
-        <label>Количество видеопамяти:</label><br>
-        <input type="number" name="video_memory_size"/>
-    </p>
-    <p>
-        <label>Тип видеопамяти:</label><br>
-        <input type="text" name="video_memory_type"/>
-    </p>
-
-    <input type="submit" value = "Сохранить">
-
-</form>
-
-
+    <h2>Список видеокарт</h2>
+    <a href="create/">Добавление видеокарты</a>
     <table>
-      <thead>
-      <th>ID</th>
-      <th>Бренд</th>
-      <th>Модель</th>
-      <th>Количество видеопамяти</th>
-      <th>Тип видеопамяти</th>
-      </thead>
-
-        <tbody>
-            {% for gpu in gpus %}
-            <tr>
-                    <td>{{ gpu.id }}</td>
-                    <td>{{ gpu.brand }}</td>
-                    <td>{{ gpu.model }}</td>
-                    <td>{{ gpu.video_memory_size }}GB</td>
-                    <td>{{ gpu.video_memory_type }}</td>
-                    <td><a href="edit/{{gpu.id}}"> Изменить </a>|
-                        <a href="delete/{{gpu.id}}">Удалить</a></td>
-
-            </tr>
-            {% endfor %}
-        </tbody>
+        <thead><th>Модель</th><th>Цена</th><th>Бренд</th><th></th></thead>
+        {% for model in models %}
+        <tr>
+            <td>{{ model.name }}</td>
+            <td>{{ model.price }}</td>
+            <td>{{ model.brand.name }}</td>
+            <td>
+                <a href="edit/{{model.id}}">Изменить</a> | <a href="delete/{{model.id}}">Удалить</a>
+            </td>
+        </tr>
+        {% endfor %}
     </table>
-
-
 </body>
 </html>
