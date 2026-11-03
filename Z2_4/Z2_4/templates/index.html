@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+
+<body>
+
+
+    <h2>Список видеокарт</h2>
+    <a href="create/">Добавление видеокарты</a>
+    <table>
+        <thead><th>ID</th><th>Видеокарта</th><th>Количество видеопамяти</th><th>Частота</th><th></th></thead>
+        {% for gpu_detail in gpu_details %}
+        <tr>
+            <td>{{gpu_detail.gpu.id}}</td>
+            <td>{{gpu_detail.gpu.name }}</td>
+            <td>{{gpu_detail.memory_size }} GB</td>
+            <td>{{gpu_detail.frequency }} MHz</td>
+            <td>
+                <a href="/edit/{{gpu_detail.gpu.id}}">Изменить</a> | <a href="/delete/{{gpu_detail.gpu.id}}">Удалить</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+
+</body>
+
+
+</html>

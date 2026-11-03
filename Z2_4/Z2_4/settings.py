@@ -55,7 +55,7 @@ ROOT_URLCONF = 'Z2_4.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'Z2_4' / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -74,16 +74,18 @@ WSGI_APPLICATION = 'Z2_4.wsgi.application'
 # https://docs.djangoproject.com/en/6.1/ref/settings/#databases
 
 DATABASES = {
-'default': {
-        'ENGINE': 'django.db.backends.postgresql', # движок
-        'NAME': 'met5db',      #  имя BD
-        'USER': 'postgres',      # Пользователь (владелец)
-        'PASSWORD': '',     #  Пароль (в данном примере пустая строка)
-        'HOST': '127.0.0.1',  #  Хост - localhost
-        'PORT': '5434',     # Порт / по умолчания:  ‘5432’
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'met5db',
+        'USER': 'postgres',
+        'PASSWORD': '1234',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+        'OPTIONS': {
+            'connect_timeout': 5,
+        },
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/6.1/ref/settings/#auth-password-validators

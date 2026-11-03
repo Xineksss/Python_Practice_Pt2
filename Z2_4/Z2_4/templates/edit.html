@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+
+<body>
+
+
+    <class = "container">
+    <h2>Изменение видеокарты</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Введите количество видеопамяти</label><br>
+            <input type="number" name="memory_size" value="{{details_gpu.memory_size}}" />
+        </p>
+        <p>
+            <label>Введите частоту</label><br>
+            <input type="number" name="frequency" value="{{details_gpu.frequency}}" />
+        </p>
+        <p>
+            <label>Введите название видеокарты</label><br>
+            <input type="text" name="name" value="{{details_gpu.gpu.name}}"/>
+        </p>
+        <input type="submit" value="Save" >
+    </form>
+
+
+</body>
+
+
+</html>
