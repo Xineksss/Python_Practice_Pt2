@@ -1,0 +1,14 @@
+from django.contrib import admin
+from django.urls import path
+from Z3app import views
+from django.conf import settings
+from django.conf.urls.static import static
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', views.index, name='index'),
+    path('customers/', views.customers, name='customers'),
+    path('products/', views.products, name='products'),
+    path('sale/', views.sale, name='sale'),
+    path('sale_progress', views.sale_progress, name='sale_progress'),
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
