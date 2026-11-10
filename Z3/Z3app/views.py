@@ -1,7 +1,7 @@
 from django.http import HttpResponseRedirect, HttpResponseNotFound
 from django.shortcuts import render, redirect
 
-from Z3app.models import Client, GPU, Spec
+from Z3app.models import Client, GPU, Spec, Purchase
 
 
 # Create your views here.
@@ -23,6 +23,13 @@ def create_client(request):
         return redirect('customers')
     return redirect('customers')
 
+def edit_client(request, id):
+    client = Client.objects.get(id=id)
+    if request.method == "POST":
+        client.name = request.POST.get("client")
+        client.save()
+        return redirect('customers')
+    return render(request, "edit_client.html", {"client": client})
 
 def delete_client(request, id):
     try:
@@ -57,9 +64,22 @@ def create_gpus_new():
         spec6 = Spec.objects.create(frequency=2017, memory_type="GDDR7", memory_size=32)
         GPU.objects.create(name="Nvidia RTX 5090", price=800000, spec=spec6)
 
-def sale(request):
-    return render(request, "sale.html")
+def purchase(request):
+    if request.method == "POST":
+        sale = Purchase()
+        sale.date_order = request.POST.get("date")
+        sale.amount = request.POST.get("amount")
+        sale.client_id = request.POST.get("client")
+        sale.gpu_id = request.POST.get("gpu")
+        sale.save()
+        return render(request, "success_buy.html", {"sale": sale})
+
+    sales= Purchase.objects.all()
+    gpus= GPU.objects.all()
+    clients=Client.objects.all()
+    return render(request, "sale.html", {"sales": sales,"gpus":gpus,"clients":clients})
 
 def sale_progress(request):
-    return render(request, "sale_progress.html")
+    sales = Purchase.objects.all()
+    return render(request,"sale_progress.html",{"sales":sales})
 

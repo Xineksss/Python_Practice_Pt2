@@ -1,6 +1,57 @@
 {% extends 'layout.html' %}
 
-{% block title %}Продажа{% endblock %}
+{% block title %}
+Продажа
+{% endblock title %}
 
-{% block content %} sale {% endblock %}
+{% block content %}
 
+<h2>Оформление заказа</h2>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <p>
+        <label for="date">Введите дату</label>
+        <br>
+        <input type="date" name="date" id="date" required>
+    </p>
+
+    <p>
+        <label for="amount">Введите количество единиц товара</label>
+        <br>
+        <input type="number" name="amount" id="amount" min="1" required>
+    </p>
+
+      <p>
+        <label for="gpu">Выберите товар</label>
+        <br>
+        <select name="gpu" id="gpu" required>
+            <option value="">--- Выберите видеокарту ---</option>
+
+            {% for gpu in gpus %}
+            <option value="{{ gpu.pk }}">
+                {{ gpu.name }} ({{ gpu.price }} руб.)
+            </option>
+            {% endfor %}
+        </select>
+    </p>
+    <p>
+        <label for="client">Выбор покупателя</label>
+        <br>
+        <select name="client" id="client" required>
+            <option value="">--- Выберите клиента ---</option>
+
+            {% for client in clients %}
+            <option value="{{ client.id }}">
+                {{ client.name }}
+            </option>
+            {% endfor %}
+        </select>
+    </p>
+
+    <button type="submit">Сохранить</button>
+
+</form>
+
+{% endblock content %}

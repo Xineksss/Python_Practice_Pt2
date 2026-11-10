@@ -2,5 +2,28 @@
 
 {% block title %}Ход продаж{% endblock %}
 
-{% block content %} sale_progress {% endblock %}
+{% block content %}
+<h2>Ход продаж</h2>
 
+<table class="text-center">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Дата</th>
+        <th>Количество</th>
+        <th>Товар</th>
+        <th>Клиент</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for sale in sales %}
+    <tr>
+        <td>{{ sale.id }}</td>
+        <td>{{ sale.date_order|date:"d E Y" }}</td>
+        <td>{{ sale.amount }}</td>
+        <td>{{ sale.gpu.name }}</td>
+        <td>{{ sale.client.name }}</td>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

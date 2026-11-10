@@ -1,16 +1,16 @@
 body {
-    background: #2c2c2c
+    background: #2c2c2c;
+    display: flex;
+    min-height: 100vh;
 }
 
 aside {
-
-    float: left;
     background: #181818;
     width: 20%;
     padding: 2.5%;
-    height: 100vh;
     color: #fff;
     border-right: 5px solid #4d4d4d;
+    box-sizing: border-box;
 }
 
 aside img {
@@ -48,8 +48,8 @@ aside ul li:hover, aside ul a:hover {
 }
 
 main {
-    margin-left: 25%;
-    padding: 20px 2.5% 2.5% 20px;
+    flex: 1;
+    padding: 20px 2.5% 2.5% 25px;
     color: white;
 }
 
@@ -61,3 +61,4 @@ table th, table td {
 table thead th {
     border-bottom: 2px solid #555;
 }
+

@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+{% block title %}Заказ оформлен{% endblock %}
+
+{% block content %}
+<h2>🎉 Вы успешно оформили заказ!</h2>
+<p>Номер вашего заказа: <strong>№{{ sale.id }}</strong></p>
+
+<table style="max-width: 600px;">
+    <tbody>
+        <tr>
+            <th>Дата оформления</th>
+            <td>{{ sale.date_order }}</td>
+        </tr>
+        <tr>
+            <th>Товар</th>
+            <td>{{ sale.gpu.name }} ({{ sale.gpu.spec.memory_size }} ГБ)</td>
+        </tr>
+        <tr>
+            <th>Количество</th>
+            <td>{{ sale.amount }} шт.</td>
+        </tr>
+        <tr>
+            <th>Покупатель</th>
+            <td>{{ sale.client.name }}</td>
+        </tr>
+        <tr>
+            <th>Итоговая стоимость</th>
+            <td><strong>{% widthratio sale.gpu.price 1 sale.amount %} руб.</strong></td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="mt-4">
+    <a href="{% url 'sale' %}" class="btn btn-primary">Повторить заказ</a>
+    <a href="{% url 'index' %}" class="btn btn-secondary">Перейти на главную</a>
+</div>
+{% endblock %}

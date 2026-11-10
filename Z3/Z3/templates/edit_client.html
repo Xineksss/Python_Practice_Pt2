@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+{% block title %}Изменить клиента{% endblock %}
+
+{% block content %}
+<h2>Изменить клиента</h2>
+<form method="POST">
+    {% csrf_token %}
+    <p>
+        <label>Новое имя клиента:</label><br>
+        <input type="text" name="client" value="{{ client.name }}" required>
+    </p>
+    <button type="submit" class="btn btn-primary">Сохранить изменения</button><t>
+    <a href="{% url 'customers' %}" class="btn btn-secondary">Отмена</a>
+</form>
+{% endblock %}
