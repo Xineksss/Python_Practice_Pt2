@@ -2,9 +2,9 @@ from django.db import models
 
 
 class Spec(models.Model):
-    frequency = models.IntegerField
+    frequency = models.IntegerField()
     memory_type = models.CharField(max_length=20)
-    memory_size = models.IntegerField
+    memory_size = models.IntegerField()
 
 
 class GPU(models.Model):

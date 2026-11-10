@@ -2,5 +2,29 @@
 
 {% block title %}Товары{% endblock %}
 
-{% block content %} products {% endblock %}
+{% block content %}
+<h2>Список товаров</h2>
 
+<table class="text-center">
+    <thead>
+    <tr>
+        <th>Название видеокарты</th>
+        <th>Тип видеопамяти</th>
+        <th>Частота видеопамяти</th>
+        <th>Количество видеопамяти</th>
+        <th>Цена</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for gpu in gpus %}
+    <tr>
+        <td>{{ gpu.name }}</td>
+        <td>{{ gpu.spec.memory_type }}</td>
+        <td>{{ gpu.spec.frequency }} Mhz</td>
+        <td>{{ gpu.spec.memory_size }} GB</td>
+        <td>{{ gpu.price }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

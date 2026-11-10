@@ -11,6 +11,7 @@ urlpatterns = [
     path('customers/create/', views.create_client, name='create_client'),
     path('customers/delete/<int:id>/', views.delete_client, name='delete_client'),
     path('products/', views.products, name='products'),
+    path('products/create_gpus/', views.create_gpus_new, name='create_gpus_new'),
     path('sale/', views.sale, name='sale'),
     path('sale_progress', views.sale_progress, name='sale_progress'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
