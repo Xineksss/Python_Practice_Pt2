@@ -44,6 +44,26 @@ def products(request):
     gpus = GPU.objects.all()
     return render(request, "products.html", {"gpus": gpus})
 
+
+def create_gpu(request):
+    if request.method == "POST":
+
+        spec = Spec.objects.create(
+            frequency=request.POST.get("frequency"),
+            memory_type=request.POST.get("memory_type"),
+            memory_size=request.POST.get("memory_size")
+        )
+        
+        GPU.objects.create(
+            name=request.POST.get("name"),
+            price=request.POST.get("price"),
+            spec=spec
+        )
+
+        return redirect('products')
+
+    return render(request, "create_gpu.html")
+
 def create_gpus_new():
     if GPU.objects.all().count() == 0:
         spec1 = Spec.objects.create(frequency=2280, memory_type="GDDR7", memory_size=8)

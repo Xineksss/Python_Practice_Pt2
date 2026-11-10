@@ -20,11 +20,16 @@
     <tr>
         <td>{{ gpu.name }}</td>
         <td>{{ gpu.spec.memory_type }}</td>
-        <td>{{ gpu.spec.frequency }} Mhz</td>
+        <td>{{ gpu.spec.frequency }} MHz</td>
         <td>{{ gpu.spec.memory_size }} GB</td>
-        <td>{{ gpu.price }} ₽</td>
+        <td class="text-nowrap">{{ gpu.price }} ₽</td>
+         <td class ="text-nowrap">
+            <a href="" class="btn btn-secondary btn-sm me-2">Изменить</a>
+            <a href="" class="btn btn-danger btn-sm">Удалить</a>
+        </td>
     </tr>
     {% endfor %}
     </tbody>
 </table>
+ <br><a href="{% url 'create_gpu' %}" class="btn btn-success">Добавить видеокарту</a>
 {% endblock %}

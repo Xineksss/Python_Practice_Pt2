@@ -12,6 +12,7 @@ urlpatterns = [
     path('customers/edit/<int:id>/', views.edit_client, name='edit_client'),
     path('customers/delete/<int:id>/', views.delete_client, name='delete_client'),
     path('products/', views.products, name='products'),
+    path('products/create/', views.create_gpu, name='create_gpu'),
     path('products/create_gpus/', views.create_gpus_new, name='create_gpus_new'),
     path('sale/', views.purchase, name='sale'),
     path('sale_progress', views.sale_progress, name='sale_progress'),

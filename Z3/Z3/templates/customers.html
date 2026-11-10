@@ -10,7 +10,7 @@
         <label>Ввести клиента:</label><br>
         <input type="text" name = "client"/>
     </p>
-    <input type="submit" value = "Сохранить">
+    <input class = "btn btn-primary" type="submit" value = "Сохранить">
 </form>
 
 <table>
@@ -22,7 +22,7 @@
         <td>{{client.id}}</td>
         <td>{{client.name}}</td>
         <td>
-            <a href="{% url 'edit_client' client.id %}" class="btn btn-primary btn-sm me-2">Изменить</a>
+            <a href="{% url 'edit_client' client.id %}" class="btn btn-secondary btn-sm me-2">Изменить</a>
             <a href="{% url 'delete_client' client.id %}" class="btn btn-danger btn-sm">Удалить</a>
         </td>
     </tr>
