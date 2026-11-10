@@ -8,6 +8,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('customers/', views.customers, name='customers'),
+    path('customers/create/', views.create_client, name='create_client'),
+    path('customers/delete/<int:id>/', views.delete_client, name='delete_client'),
     path('products/', views.products, name='products'),
     path('sale/', views.sale, name='sale'),
     path('sale_progress', views.sale_progress, name='sale_progress'),
