@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+{% load l10n %}
+
+{% block title %}Редактировать товар{% endblock %}
+
+{% block content %}
+<h2>Редактировать товар</h2>
+
+<form method="POST" style="max-width: 600px;">
+    {% csrf_token %}
+
+        <label class="form-label">Название видеокарты:</label><br>
+
+        <input type="text" name="name" value="{{ gpu.name }}" required><br><br>
+
+        <label class="form-label">Цена (₽):</label><br>
+        <input type="number" step="any" name="price" value="{{ gpu.price|unlocalize }}" required><br><br>
+
+        <label class="form-label">Тип видеопамяти:</label><br>
+        <input type="text" name="memory_type" value="{{ gpu.spec.memory_type }}" required><br><br>
+
+        <label class="form-label">Частота (Mhz):</label><br>
+        <input type="number" name="frequency" value="{{ gpu.spec.frequency }}" required><br><br>
+
+        <label class="form-label">Количество видеопамяти (GB):</label><br>
+        <input type="number" name="memory_size" value="{{ gpu.spec.memory_size }}" required><br><br>
+
+
+    <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+    <a href="{% url 'products' %}" class="btn btn-secondary">Отмена</a>
+</form>
+{% endblock %}

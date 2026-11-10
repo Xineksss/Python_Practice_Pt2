@@ -63,13 +63,4 @@ table thead th {
 }
 
 
-.table-small {
-    width: 70%;         /* Делает таблицу уже (70% от ширины экрана) */
-    margin: 0 auto;     /* Ставит её по центру */
-    font-size: 14px;    /* Уменьшает шрифт */
-}
-.table-small td, .table-small th {
-    padding: 8px;       /* Уменьшает отступы внутри ячеек (строки становятся тоньше) */
-}
-
 

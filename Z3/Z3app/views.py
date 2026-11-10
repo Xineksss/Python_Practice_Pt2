@@ -64,6 +64,36 @@ def create_gpu(request):
 
     return render(request, "create_gpu.html")
 
+
+def edit_gpu(request, id):
+
+    gpu = GPU.objects.get(pk=id)
+
+    if request.method == "POST":
+        gpu.name = request.POST.get("name")
+        gpu.price = request.POST.get("price")
+        gpu.save()
+
+        spec = gpu.spec
+        spec.frequency = request.POST.get("frequency")
+        spec.memory_type = request.POST.get("memory_type")
+        spec.memory_size = request.POST.get("memory_size")
+        spec.save()
+
+        return redirect('products')
+
+    return render(request, "edit_gpu.html", {"gpu": gpu})
+
+
+def delete_gpu(request, id):
+    try:
+        gpu = GPU.objects.get(pk=id)
+        gpu.delete()
+        return redirect('products')
+    except Client.DoesNotExist:
+        return HttpResponseNotFound("<h2> Товар не найден </h2>")
+
+
 def create_gpus_new():
     if GPU.objects.all().count() == 0:
         spec1 = Spec.objects.create(frequency=2280, memory_type="GDDR7", memory_size=8)
@@ -83,6 +113,7 @@ def create_gpus_new():
 
         spec6 = Spec.objects.create(frequency=2017, memory_type="GDDR7", memory_size=32)
         GPU.objects.create(name="Nvidia RTX 5090", price=800000, spec=spec6)
+
 
 def purchase(request):
     if request.method == "POST":
