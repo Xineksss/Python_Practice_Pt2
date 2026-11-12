@@ -11,11 +11,14 @@ aside {
     color: #fff;
     border-right: 5px solid #4d4d4d;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
 }
 
 aside img {
     width: 200px;
     float: left;
+    margin: 0 auto 15px auto;
 }
 
 aside .logo{
@@ -62,5 +65,12 @@ table thead th {
     border-bottom: 2px solid #555;
 }
 
-
-
+.back-home-btn {
+    margin-top: auto;
+    margin-bottom: 30px;
+    width: 11%;
+    margin-right: 20px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 8px;
+}

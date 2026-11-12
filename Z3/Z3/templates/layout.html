@@ -13,8 +13,8 @@
 </head>
 <body>
     <aside>
-        <img src="{% static '/main/img/test_logo.png' %}" alt="logo">
-        <span class="logo">Наше название</span>
+        <img src="{% static 'main/img/test_logo.png' %}" alt="logo">
+        <span class="logo">Переплати<br>за логотип</span>
       <h3>Навигация</h3>
       <ul>
         <a href = "{% url 'customers' %}"><li><i class="fa-solid fa-people-group"></i> Клиенты</li></a>
@@ -27,5 +27,11 @@
       {% block content %}
       {% endblock content %}
     </main>
+
+ {% if request.path != '/' %}
+            <a href="{% url 'index' %}" class="btn btn-outline-light back-home-btn">
+                <i class="fa-solid fa-house"></i> На главную
+            </a>
+        {% endif %}
 </body>
 </html>

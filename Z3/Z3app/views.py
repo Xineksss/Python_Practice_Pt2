@@ -1,7 +1,7 @@
 from django.http import HttpResponseRedirect, HttpResponseNotFound
 from django.shortcuts import render, redirect
 
-from Z3app.models import Client, GPU, Spec, Purchase
+from .models import Client, GPU, Spec, Purchase
 
 
 # Create your views here.
@@ -48,20 +48,28 @@ def products(request):
 def create_gpu(request):
     if request.method == "POST":
 
+        price_str = request.POST.get("price")
+
+        try:
+            price = float(price_str)
+            if price <= 0:
+                return render(request, "create_gpu.html", {"error": "Цена должна быть больше нуля!"})
+        except (ValueError, TypeError):
+            return render(request, "create_gpu.html", {"error": "Введите корректную цену (число)!"})
+
         spec = Spec.objects.create(
             frequency=request.POST.get("frequency"),
             memory_type=request.POST.get("memory_type"),
             memory_size=request.POST.get("memory_size")
         )
-        
+
         GPU.objects.create(
             name=request.POST.get("name"),
-            price=request.POST.get("price"),
+            price=price,
             spec=spec
         )
 
         return redirect('products')
-
     return render(request, "create_gpu.html")
 
 
